@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Audiwebservice" table="audiwebservice" catalog="puntosfarmanorte">
+        <id name="idaudiwebservice" type="int">
+            <column name="idaudiwebservice" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sucursal" class="com.dromedicas.dto.Sucursal" fetch="select">
+            <column name="sucursalid" not-null="true" />
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+        <many-to-one name="eventowebservice" class="com.dromedicas.dto.Eventowebservice" fetch="select">
+            <column name="idevento" not-null="true" />
+        </many-to-one>
+        <property name="apikey" type="string">
+            <column name="apikey" length="45" />
+        </property>
+        <property name="contenido" type="string">
+            <column name="contenido" length="65535" />
+        </property>
+        <property name="fecharequest" type="timestamp">
+            <column name="fecharequest" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Transaccion" table="transaccion" catalog="puntosfarmanorte">
+        <id name="idtransaccion" type="java.lang.Integer">
+            <column name="idtransaccion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sucursal" class="com.dromedicas.dto.Sucursal" fetch="select">
+            <column name="idsucursal" not-null="true" />
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipotransaccion" class="com.dromedicas.dto.Tipotransaccion" fetch="select">
+            <column name="tipotx" not-null="true" />
+        </many-to-one>
+        <property name="fechatransaccion" type="timestamp">
+            <column name="fechatransaccion" length="0" not-null="true" />
+        </property>
+        <property name="nrofactura" type="string">
+            <column name="nrofactura" length="45" not-null="true" />
+        </property>
+        <property name="valortotaltx" type="int">
+            <column name="valortotaltx" not-null="true" />
+        </property>
+        <set name="puntoses" table="puntos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtransaccion" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Puntos" />
+        </set>
+        <set name="emailenvios" table="emailenvio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtransaccion" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Emailenvio" />
+        </set>
+        <set name="detransaccions" table="detransaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtransaccion" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Detransaccion" />
+        </set>
+    </class>
+</hibernate-mapping>

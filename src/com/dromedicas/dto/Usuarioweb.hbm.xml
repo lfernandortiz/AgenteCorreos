@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Usuarioweb" table="usuarioweb" catalog="puntosfarmanorte">
+        <id name="idusuarioweb" type="int">
+            <column name="idusuarioweb" />
+            <generator class="foreign">
+                <param name="property">usuario</param>
+            </generator>
+        </id>
+        <one-to-one name="usuario" class="com.dromedicas.dto.Usuario" constrained="true"></one-to-one>
+        <property name="usuario_1" type="string">
+            <column name="usuario" length="30" not-null="true" />
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="10" not-null="true" />
+        </property>
+        <property name="nombreusuario" type="string">
+            <column name="nombreusuario" length="45" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <property name="ultacceso" type="timestamp">
+            <column name="ultacceso" length="0" />
+        </property>
+        <property name="ultcamioclave" type="timestamp">
+            <column name="ultcamioclave" length="0" />
+        </property>
+        <property name="creado" type="java.lang.Integer">
+            <column name="creado" />
+        </property>
+        <property name="fechacreado" type="timestamp">
+            <column name="fechacreado" length="0" />
+        </property>
+        <property name="tipousuarioid" type="int">
+            <column name="tipousuarioid" not-null="true" />
+        </property>
+        <set name="usuarioperfils" table="usuarioperfil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idusuario" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Usuarioperfil" />
+        </set>
+        <set name="permisorols" table="permisorol" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idusuario" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Permisorol" />
+        </set>
+    </class>
+</hibernate-mapping>

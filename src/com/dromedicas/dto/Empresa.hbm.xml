@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Empresa" table="empresa" catalog="puntosfarmanorte">
+        <id name="idempresa" type="java.lang.Integer">
+            <column name="idempresa" />
+            <generator class="identity" />
+        </id>
+        <property name="nit" type="string">
+            <column name="nit" length="45" not-null="true" />
+        </property>
+        <property name="nombreEmpresa" type="string">
+            <column name="nombre_empresa" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="emailNotificaciones" type="string">
+            <column name="email_notificaciones" length="50" not-null="true" />
+        </property>
+        <set name="empresaparametroemails" table="empresaparametroemail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Empresaparametroemail" />
+        </set>
+        <set name="vendedors" table="vendedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Vendedor" />
+        </set>
+        <set name="sucursals" table="sucursal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Sucursal" />
+        </set>
+        <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Contrato" />
+        </set>
+        <set name="afiliados" table="afiliado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Afiliado" />
+        </set>
+        <property name="creacion" type="timestamp">
+            <column name="creacion" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

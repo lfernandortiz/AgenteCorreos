@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Sucursal" table="sucursal" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.SucursalId">
+            <key-property name="idsucursal" type="int">
+                <column name="idsucursal" />
+            </key-property>
+            <key-property name="idempresa" type="int">
+                <column name="idempresa" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usuario" class="com.dromedicas.dto.Usuario" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empresa" class="com.dromedicas.dto.Empresa" update="false" insert="false" fetch="select">
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+        <property name="nombreSucursal" type="string">
+            <column name="nombre_sucursal" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="20" />
+        </property>
+        <property name="codigointerno" type="string">
+            <column name="codigointerno" length="10" not-null="true" />
+        </property>
+        <property name="apikey" type="string">
+            <column name="apikey" length="45" not-null="true" />
+        </property>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idsucursal" not-null="true" />
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Transaccion" />
+        </set>
+        <set name="audiwebservices" table="audiwebservice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sucursalid" not-null="true" />
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Audiwebservice" />
+        </set>
+    </class>
+</hibernate-mapping>

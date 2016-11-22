@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Contrato" table="contrato" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.ContratoId">
+            <key-property name="idcontrato" type="int">
+                <column name="idcontrato" />
+            </key-property>
+            <key-property name="idempresa" type="int">
+                <column name="idempresa" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="empresa" class="com.dromedicas.dto.Empresa" update="false" insert="false" fetch="select">
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+        <property name="fechainicio" type="date">
+            <column name="fechainicio" length="0" not-null="true" />
+        </property>
+        <property name="fechafin" type="date">
+            <column name="fechafin" length="0" not-null="true" />
+        </property>
+        <set name="instancias" table="instancia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcontrato" not-null="true" />
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Instancia" />
+        </set>
+        <set name="condicionservicios" table="condicionservicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcontrato" not-null="true" />
+                <column name="idempresa" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Condicionservicio" />
+        </set>
+    </class>
+</hibernate-mapping>

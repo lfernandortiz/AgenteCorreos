@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Rol" table="rol" catalog="puntosfarmanorte">
+        <id name="idrol" type="java.lang.Integer">
+            <column name="idrol" />
+            <generator class="identity" />
+        </id>
+        <property name="nombrerol" type="string">
+            <column name="nombrerol" length="45" not-null="true" />
+        </property>
+        <set name="permisorols" table="permisorol" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idrol" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Permisorol" />
+        </set>
+    </class>
+</hibernate-mapping>

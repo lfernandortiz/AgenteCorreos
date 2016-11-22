@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Emailestado" table="emailestado" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.EmailestadoId">
+            <key-property name="idemailenvio" type="string">
+                <column name="idemailenvio" length="40" />
+            </key-property>
+            <key-property name="afiliadoid" type="string">
+                <column name="afiliadoid" length="20" />
+            </key-property>
+            <key-property name="nacionalidad" type="string">
+                <column name="nacionalidad" length="45" />
+            </key-property>
+            <key-property name="idtipestadoemail" type="int">
+                <column name="idtipestadoemail" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tipoestaestadoemail" class="com.dromedicas.dto.Tipoestaestadoemail" update="false" insert="false" fetch="select">
+            <column name="idtipestadoemail" not-null="true" />
+        </many-to-one>
+        <many-to-one name="emailenvio" class="com.dromedicas.dto.Emailenvio" update="false" insert="false" fetch="select">
+            <column name="idemailenvio" length="40" not-null="true" />
+            <column name="afiliadoid" length="20" not-null="true" />
+            <column name="nacionalidad" length="45" not-null="true" />
+        </many-to-one>
+        <property name="fechaestado" type="timestamp">
+            <column name="fechaestado" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

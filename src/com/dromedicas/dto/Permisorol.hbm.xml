@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Permisorol" table="permisorol" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.PermisorolId">
+            <key-property name="idrol" type="int">
+                <column name="idrol" />
+            </key-property>
+            <key-property name="idusuario" type="int">
+                <column name="idusuario" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usuarioweb" class="com.dromedicas.dto.Usuarioweb" update="false" insert="false" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rol" class="com.dromedicas.dto.Rol" update="false" insert="false" fetch="select">
+            <column name="idrol" not-null="true" />
+        </many-to-one>
+        <property name="agregar" type="java.lang.Boolean">
+            <column name="agregar" />
+        </property>
+        <property name="seleccionar" type="java.lang.Boolean">
+            <column name="seleccionar" />
+        </property>
+        <property name="insertar" type="java.lang.Boolean">
+            <column name="insertar" />
+        </property>
+        <property name="eliminar" type="java.lang.Boolean">
+            <column name="eliminar" />
+        </property>
+        <property name="especial1" type="java.lang.Boolean">
+            <column name="especial1" />
+        </property>
+        <property name="especial2" type="java.lang.Boolean">
+            <column name="especial2" />
+        </property>
+    </class>
+</hibernate-mapping>

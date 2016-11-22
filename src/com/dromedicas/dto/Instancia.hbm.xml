@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Instancia" table="instancia" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.InstanciaId">
+            <key-property name="idinstancia" type="int">
+                <column name="idinstancia" />
+            </key-property>
+            <key-property name="idcontrato" type="int">
+                <column name="idcontrato" />
+            </key-property>
+            <key-property name="idempresa" type="int">
+                <column name="idempresa" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="contrato" class="com.dromedicas.dto.Contrato" update="false" insert="false" fetch="select">
+            <column name="idcontrato" not-null="true" />
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

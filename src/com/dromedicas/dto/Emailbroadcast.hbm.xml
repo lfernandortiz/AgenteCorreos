@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Emailbroadcast" table="emailbroadcast" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.EmailbroadcastId">
+            <key-property name="idafiliado" type="string">
+                <column name="idafiliado" length="20" />
+            </key-property>
+            <key-property name="instanteenvio" type="timestamp">
+                <column name="instanteenvio" length="0" />
+            </key-property>
+            <key-property name="nacionalidad" type="string">
+                <column name="nacionalidad" length="45" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="afiliado" class="com.dromedicas.dto.Afiliado" update="false" insert="false" fetch="select">
+            <column name="idafiliado" length="20" not-null="true" />
+            <column name="nacionalidad" length="45" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoemail" class="com.dromedicas.dto.Tipoemail" fetch="select">
+            <column name="idtipoemail" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoestaestadoemail" class="com.dromedicas.dto.Tipoestaestadoemail" fetch="select">
+            <column name="estadoemail" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Tipotransaccion" table="tipotransaccion" catalog="puntosfarmanorte">
+        <id name="idtipotransaccion" type="java.lang.Integer">
+            <column name="idtipotransaccion" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipotx" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Transaccion" />
+        </set>
+    </class>
+</hibernate-mapping>

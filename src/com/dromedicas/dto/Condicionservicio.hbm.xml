@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Condicionservicio" table="condicionservicio" catalog="puntosfarmanorte">
+        <composite-id name="id" class="com.dromedicas.dto.CondicionservicioId">
+            <key-property name="idcontrato" type="int">
+                <column name="idcontrato" />
+            </key-property>
+            <key-property name="idempresa" type="int">
+                <column name="idempresa" />
+            </key-property>
+            <key-property name="redensionsucursales" type="boolean">
+                <column name="redensionsucursales" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="contrato" class="com.dromedicas.dto.Contrato" update="false" insert="false" fetch="select">
+            <column name="idcontrato" not-null="true" />
+            <column name="idempresa" not-null="true" />
+        </many-to-one>
+        <property name="basegravable" type="int">
+            <column name="basegravable" not-null="true">
+                <comment>Valor minimo a partir del cual se acumulan puntos</comment>
+            </column>
+        </property>
+        <property name="factorpuntos" type="int">
+            <column name="factorpuntos" not-null="true">
+                <comment>Son los puntos otorgados por la basegravable</comment>
+            </column>
+        </property>
+        <property name="enviosms" type="boolean">
+            <column name="enviosms" not-null="true" />
+        </property>
+        <property name="envioemail" type="boolean">
+            <column name="envioemail" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

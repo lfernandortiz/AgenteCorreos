@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/10/2016 11:16:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dromedicas.dto.Emailparametro" table="emailparametro" catalog="puntosfarmanorte">
+        <id name="idemailparametro" type="java.lang.Integer">
+            <column name="idemailparametro" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreparametro" type="string">
+            <column name="nombreparametro" length="60" />
+        </property>
+        <set name="empresaparametroemails" table="empresaparametroemail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ideparametro" not-null="true" />
+            </key>
+            <one-to-many class="com.dromedicas.dto.Empresaparametroemail" />
+        </set>
+    </class>
+</hibernate-mapping>

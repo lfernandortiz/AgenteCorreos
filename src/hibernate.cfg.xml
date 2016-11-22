@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.c3p0.timeout">0</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/puntosfarmanorte</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="connection.autocommit">true</property>
+        <mapping resource="com/dromedicas/dto/Perfil.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Usuarioperfil.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Producto.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Usuarioweb.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tipousuario.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Usuario.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Empresaparametroemail.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Detransaccion.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Afiliado.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Permisorol.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Transaccion.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Smsenvio.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Globalstats.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Empresa.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Smsbroadcast.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Emailenvio.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Estadosms.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Contrato.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tiposms.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tipoestaestadoemail.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Condicionservicio.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Sucursal.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tipoemail.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Emailbroadcast.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Puntos.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Rol.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Audiwebservice.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Eventowebservice.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Emailparametro.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tipodocumento.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Emailestado.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Tipotransaccion.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Instancia.hbm.xml" />
+        <mapping resource="com/dromedicas/dto/Vendedor.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
